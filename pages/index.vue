@@ -11,11 +11,24 @@
 
 <script>
 export default {
-  async asyncData () {},
+  asyncData () {},
   computed: {
     cities () {
       return this.$store.getters['cities/cities']
     }
+  },
+  mounted () {
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const current = await this.$store.dispatch('weather/getByCoord', position.coords)
+        if (current) {
+          this.$store.dispatch('cities/addCity', current)
+        }
+      },
+      (error) => {
+        this.$store.dispatch('setMessage', { value: error.message, type: 'error' })
+      }
+    )
   },
   methods: {
     remove (item) {

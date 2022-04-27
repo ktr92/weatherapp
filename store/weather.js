@@ -9,6 +9,14 @@ export const actions = {
     } catch (error) {
       dispatch('setMessage', { value: error.message, type: 'error' }, { root: true })
     }
+  },
+  async getByCoord ({ dispatch }, formData) {
+    try {
+      const uri = `https://api.openweathermap.org/data/2.5/weather?lat=${formData.latitude}&lon=${formData.longitude}&appid=6becd2fb6d50d754170af86e6c22c3a0&units=metric`
+      return await this.$axios.$get(uri)
+    } catch (error) {
+      dispatch('setMessage', { value: error.message, type: 'error' }, { root: true })
+    }
   }
 }
 

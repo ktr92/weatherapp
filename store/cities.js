@@ -20,7 +20,6 @@ export const mutations = {
     state.cities.push(payload)
   },
   removeOne (state, payload) {
-    console.log(payload)
     state.cities = state.cities.filter(item => item.id !== payload.id)
   }
 }
