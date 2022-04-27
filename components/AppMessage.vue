@@ -1,10 +1,10 @@
 <template>
   <div
     v-if="message"
-    class="my-2 fixed container bottom-0 bg-gray-200 rounded-lg"
-    :class="{'text-red-400': typeError, 'text-green-500': typeInfo, 'text-yellow-400': typeWarning, }"
+    class="my-2 fixed container bottom-0 bg-gray-200 rounded-lg z-50"
+    :class="{'text-red-400': typeError, 'text-green-500': typeInfo, 'text-yellow-500': typeWarning, }"
   >
-    <p class="py-2 px-4 font-bold ">
+    <p class="py-2 px-4 font-bold text-2xl">
       {{ message.value }}
     </p>
   </div>

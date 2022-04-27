@@ -1,10 +1,10 @@
 <template>
-  <div class="group w-1/3 rounded border-gray-500 border-dashed hover:border-solid border-2 shadow-lg overflow-hidden">
-    <div class="md:flex items-center justify-center bg-white  p-4">
-      <div class="absolute opacity-100 group-hover:opacity-0">
-        <svg class="w-16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve"><g><g><path fill="#6b7280" d="M8,0C3.589,0,0,3.589,0,8s3.589,8,8,8s8-3.589,8-8S12.411,0,8,0z M8,14c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S11.309,14,8,14z"/><polygon fill="#6b7280" points="9,4 7,4 7,7 4,7 4,9 7,9 7,12 9,12 9,9 12,9 12,7 9,7 "/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+  <div class="group md:w-1/3 w-full p-2  overflow-hidden">
+    <div class="flex items-center justify-center bg-white p-4 h-40 rounded-md border-gray-500 border-dashed hover:border-solid border-2 shadow-md">
+      <div class="absolute transition duration-300 opacity-100 z-1 group-hover:opacity-0 group-hover:-z-1">
+        <svg class="w-16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve"><g><g><path fill="#d1d5db" d="M8,0C3.589,0,0,3.589,0,8s3.589,8,8,8s8-3.589,8-8S12.411,0,8,0z M8,14c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S11.309,14,8,14z"/><polygon fill="#d1d5db" points="9,4 7,4 7,7 4,7 4,9 7,9 7,12 9,12 9,9 12,9 12,7 9,7 "/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
       </div>
-      <div class="opacity-0 group-hover:opacity-100">
+      <div class="opacity-0 z-0 transition duration-300 group-hover:opacity-100">
         <form @submit.prevent="onSubmit">
           <label for="" class="w-full mb-4 text-gray-500">Введите название города</label>
           <input
@@ -35,8 +35,7 @@ export default {
         this.$store.dispatch('setMessage', { value: 'Загружаем...', type: 'warning' })
         this.data = await this.$store.dispatch('weather/getWeather', this.formCity)
         if (this.data) {
-          this.$store.dispatch('setMessage', { value: 'Данные успешно получены!', type: 'info' })
-          console.log(this.data)
+          this.$store.dispatch('setMessage', { value: 'Город добавлен!', type: 'info' })
           this.$store.dispatch('cities/addCity', this.data)
         }
       } else {

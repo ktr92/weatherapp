@@ -1,11 +1,10 @@
 <template>
-  <div class="flex">
-    <div
+  <div class="flex flex-wrap md:-mx-2 w-full">
+    <app-city
       v-for="item in cities"
       :key="item.id"
-    >
-      <app-city :data="item"></app-city>
-    </div>
+      :data="item"
+      @remove="remove(item)"></app-city>
     <app-form></app-form>
   </div>
 </template>
@@ -16,6 +15,11 @@ export default {
   computed: {
     cities () {
       return this.$store.getters['cities/cities']
+    }
+  },
+  methods: {
+    remove (item) {
+      this.$store.dispatch('cities/removeCity', item)
     }
   }
 }
