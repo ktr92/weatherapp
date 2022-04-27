@@ -3,8 +3,15 @@ export const state = () => ({
 })
 
 export const actions = {
-  addCity ({ commit }, payload) {
-    commit('addOne', payload)
+  addCity ({ state, commit, dispatch }, payload) {
+    if (!state.cities.filter(item => item.id === payload.id).length) {
+      commit('addOne', payload)
+    } else {
+      dispatch('setMessage', { value: 'Такой город уже добавлен!', type: 'warning' }, { root: true })
+    }
+  },
+  removeCity ({ state, commit }, payload) {
+    commit('removeOne', payload)
   }
 }
 
@@ -13,7 +20,8 @@ export const mutations = {
     state.cities.push(payload)
   },
   removeOne (state, payload) {
-    state.cities.filter(item => item.id !== payload.id)
+    console.log(payload)
+    state.cities = state.cities.filter(item => item.id !== payload.id)
   }
 }
 

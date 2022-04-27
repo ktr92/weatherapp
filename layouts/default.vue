@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="bg-gray-100">
+    <div class="bg-gray-100 pb-16">
       <the-navbar></the-navbar>
       <div class="container mx-auto h-screen py-20">
         <app-message></app-message>
