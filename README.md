@@ -1,69 +1,34 @@
-# weather-nuxt
+# Обзор приложения
 
-## Build Setup
+Приложение состоит из одной страницы, на которой выводятся погодные данные по всем указанным городам.
 
-```bash
-# install dependencies
-$ npm install
+# Компоненты
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+Используется 5 компонентов: 
+1. TheNavbar - Шапка приложения
+2. AppForm - Форма для добавления городов
+3. AppCity - Карточка города с информацией о погоде
+4. AppMessage - система сообщений для вывода информации об ошибках, успешных запросах, информационных сообщений
+5. AppLoader - индикатор загрузки, которым мы можем произвольно выводить в клиентской части. Например, при первичной загрузке данных из локального харнилища клиента. (Видно, если добавить несколько городов и обновить страницу)
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+# Механизм работы приложения
+## Добавление города
+* По умолчанию выводится 1 город, определенный браузером через геолокацию (Если она разрешена)
+* С помощью формы можно добавлять любое количество городов. При пустом поле появится сообщение об ошибке в блоке оповещений.
+* В случае, если город введен некорректно, появится сообщение об ошибке в блоке оповещений.
+* Каждый город может добавлен только 1 раз, иначе появится уведомление о том, что такой город уже был добавлен.
 
-# generate static project
-$ npm run generate
-```
+## Отображение погодных данных
+* При успешном добавлении города, его название добавлzется в локальное хранилище браузера. При этом отображается уведомление в блоке оповещений.
+* В карточке отображается следующая информация: 
+- Название города (и код страны)
+- Температура (желтым цветом если тепло, синим если холодно)
+- Облачность 
+- Иконка состояния погоды
+* При обновлении страницы, погодные данные обновляются для списка навзаний городов, хранящихся в локальном хранилище браузера.
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+## Удаление городов
+* При удалении города он удалется из локального хранилища и из текущего состояния приложения
+* Если удалить ваш город, определенный по умолчанию, но оставить другие, то это состояние сохранится. То есть, ваш город по умолчанию не будет добавлен повторно.
+* Если удалить все города, то при обновлении страницы ваш город по умолчанию снова добавится автоматически.
 
-## Special Directories
-
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
-
-### `assets`
-
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
-
-### `components`
-
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).

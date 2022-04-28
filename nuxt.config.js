@@ -16,10 +16,6 @@ export default {
   css: [
   ],
 
-  plugins: [
-    '@/plugins/axios'
-  ],
-
   components: true,
 
   buildModules: [
@@ -33,10 +29,6 @@ export default {
 
   modules: [
     '@nuxtjs/axios'
-  ],
-
-  serverMiddleware: [
-    '~/api/index.js'
   ],
 
   axios: {},

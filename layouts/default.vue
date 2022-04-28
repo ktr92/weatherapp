@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="bg-gray-100 pb-16">
-      <the-navbar></the-navbar>
+    <div class="bg-gray-100">
+      <TheNavbar />
       <div class="container mx-auto h-screen py-20">
-        <app-message></app-message>
-        <nuxt></nuxt>
+        <AppMessage />
+        <Nuxt />
       </div>
     </div>
   </div>
@@ -15,5 +15,7 @@ export default {}
 </script>
 
 <style>
-
+  * {
+    outline: none !important;
+  }
 </style>

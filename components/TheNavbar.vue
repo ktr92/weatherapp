@@ -9,9 +9,5 @@
 </template>
 
 <script>
-export default {
-  methods: {
-    add () {}
-  }
-}
+export default {}
 </script>

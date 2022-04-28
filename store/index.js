@@ -1,28 +1,40 @@
 export const state = () => ({
-  error: {
+  MESSAGE_CODE: {
+    fail: 'Ошибка! Что-то пошло не так',
+    notfound: 'Такой город не найден!',
+    exist: 'Такой город уже был добавлен!',
+    empty: 'Введите название города!',
+    geo: 'Не удалось определить местоположениe',
+    loading: 'Загрузка...',
+    success: 'Город успешно добавлен',
+    remove: 'Город успешно удален!'
+  },
+  message: {
     value: 'Добро пожаловать!',
     type: 'info'
   }
 })
 
 export const actions = {
+  // добавление сообщения об ошибке, и удаление через 5 сек
   setMessage ({ commit }, message) {
-    commit('setError', message)
+    commit('setMessage', message)
     setTimeout(() => {
-      commit('clearError')
+      commit('clearMessage')
     }, 5000)
   }
 }
 
 export const mutations = {
-  setError (state, error) {
-    state.error = error
+  setMessage (state, message) {
+    state.message = message
   },
-  clearError (state) {
-    state.error = null
+  clearMessage (state) {
+    state.message = null
   }
 }
 
 export const getters = {
-  error: state => state.error
+  message: state => state.message,
+  code: state => state.MESSAGE_CODE
 }

@@ -14,17 +14,19 @@
 export default {
   // компонент для оповещения о событиях (ошибки, успешные запросы и т.д.)
   computed: {
+    // получаем сообщение из стора
     message () {
-      return this.$store.getters.error
+      return this.$store.getters.message
     },
+    // определяем тип сообщения
     typeError () {
-      return this.$store.getters.error.type === 'error'
+      return this.$store.getters.message.type === 'error'
     },
     typeInfo () {
-      return this.$store.getters.error.type === '' || this.$store.getters.error.type === 'info'
+      return this.$store.getters.message.type === '' || this.$store.getters.message.type === 'info'
     },
     typeWarning () {
-      return this.$store.getters.error.type === 'warning'
+      return this.$store.getters.message.type === 'warning'
     }
   }
 }
