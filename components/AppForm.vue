@@ -17,9 +17,9 @@
             :on-change="onChange"
           />
 
-          <!--  <button class="bg-green-500 shadow-md 00 rounded-full py-2 px-6 text-white font-bold">
+          <button class="bg-green-500 shadow-md 00 rounded-full py-2 px-6 text-white font-bold">
             Добавить
-          </button> -->
+          </button>
         </form>
       </div>
     </div>
