@@ -31,8 +31,6 @@ export default {
     '@nuxtjs/axios'
   ],
 
-  axios: {},
+  axios: {}
 
-  build: {
-  }
 }
